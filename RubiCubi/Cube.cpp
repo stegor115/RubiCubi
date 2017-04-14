@@ -6,11 +6,15 @@ Make solving algorithm
 */
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
 	//Array declarations, the array's name is based on the cube in the center
-	char white[3][3] = { {'W','W','W'},{'W','W','W'},{'W','W','W'} };
+	//Remember to account for the zero;
+	char white[3][3] = { {'W','W','W'},
+						 {'W','W','W'},
+						 {'W','W','W'} };
 	char blue[3][3];
 	char red[3][3];
 	char green[3][3];
@@ -22,7 +26,6 @@ int main() {
 	   Right: Red / Top: Blue
 	   Bottom: Green / Back: Yellow
 	-----------------------------------*/
-	cout << white[3][3];
-
-
+	cout << white[0][0];
+	return 0;
 } //end main
