@@ -71,13 +71,37 @@ int main() {
 			cube.clockLeft();
 			cout << "Left side has been rotated clockwise." << endl;
 		} //end clockLeft if
+
+		else if (input == "clock_top")
+		{
+			cube.clockTop();
+			cout << "Top side has been rotated clockwise." << endl;
+		} //end clockTop if
+
+		else if (input == "clock_bottom")
+		{
+			cube.clockBottom();
+			cout << "Bottom side has been rotated clockwise." << endl;
+		} //end clockBottom if
+
+		else if (input == "clock_front") //Currently Broken
+		{
+			cube.clockFront();
+			cout << "Front face has been rotated clockwise." << endl;
+		}
 		
 		//Counter Clockwise turns
+		else if (input == "count_right")
+		{
+			cube.countRight();
+			cout << "Right side has been rotated counter clockwise." << endl;
+		} //end countRight if
+
 		else if (input == "count_top")
 		{
 			cube.countTop();
 			cout << "Top side has been rotated counter clockwise" << endl;
-		}
+		} //end countTop if
 
 		else if(input == "help")
 		{
@@ -91,12 +115,15 @@ int main() {
 			cout << "show_yellow - Shows yellow side of cube" << endl;
 			// Clockwise rotation commands
 			// Might want to consider changing the command name
-			cout << "clock_right - Rotates the right side of the cube clockwise" << endl;
+			cout << "\nclock_right - Rotates the right side of the cube clockwise" << endl;
 			cout << "clock_left - Rotates the left side of the cube clockwise." << endl;
+			cout << "clock_top - Rotates the top side of the cube clockwise" << endl;
+			cout << "clock_bottom - Rotates the bottom side of the cube clockwise" << endl;
+			cout << "clock_front - Rotates the front face of the cube clockwise (CURRENTLY BROKEN)" << endl;
 			//Counter Clockwise Rorations
-			cout << "count_top - Rotates the top of the cube counter clockwise." << endl;
+			cout << "\ncount_top - Rotates the top of the cube counter clockwise." << endl;
 			//Other informational commands
-			cout << "info - Show explaination as to how the cube is interperted in the program" << endl;
+			cout << "\ninfo - Show explaination as to how the cube is interperted in the program" << endl;
 			cout << "help - Shows list of commands available to the user" << endl;
 			cout << "clear - Deletes all current text in console" << endl;
 			cout << "quit - Ends program\n" << endl;

@@ -28,7 +28,11 @@ class Cube
 		//Clockwise Rotations
 		void clockRight();
 		void clockLeft();
+		void clockTop();
+		void clockBottom();
+		void clockFront();
 		//Counter-Clockwise Rotations
+		void countRight();
 		void countTop();
 		Cube();
 };
