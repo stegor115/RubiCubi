@@ -26,7 +26,10 @@ class Cube
 		void getOrange();
 		void getYellow();
 		//Clockwise Rotations
-		void roRight();
+		void clockRight();
+		void clockLeft();
+		//Counter-Clockwise Rotations
+		void countTop();
 		Cube();
 };
 

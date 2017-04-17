@@ -90,7 +90,42 @@ void Cube::getYellow()
 }
 
 //Clockwise Rotations
-void Cube::roRight()
+void Cube::clockRight()
 {
+	char temp[3][3]; //Holds value of a side to swap
+	for (int i = 0; i < 3; i++) 
+	{
+		temp[i][2] = white[i][2];
+		white[i][2] = green[i][2];
+		green[i][2] = yellow[i][2];
+		yellow[i][2] = blue[i][2];
+		blue[i][2] = temp[i][2];
+	}//end for
+} //end clock right
 
-}
+void Cube::clockLeft()
+{
+	char temp[3][3];
+	for (int i = 0; i < 3; i++) 
+	{
+		temp[i][0] = white[i][0];
+		white[i][0] = blue[i][0];
+		blue[i][0] = yellow[i][0];
+		yellow[i][0] = green[i][0];
+		green[i][0] = temp[i][0];
+	} //end for
+} //end clock left
+
+//Counter Clockwise Rotations
+void Cube::countTop()
+{
+	char temp[3][3];
+	for (int i = 0; i < 3; i++) 
+	{
+		temp[0][i] = white[0][i];
+		white[0][i] = orange[0][i];
+		orange[0][i] = yellow[0][i];
+		yellow[0][i] = red[0][i];
+		red[0][i] = temp[0][i];
+	} //end for
+} //end clock Top

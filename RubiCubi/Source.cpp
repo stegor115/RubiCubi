@@ -59,6 +59,26 @@ int main() {
 			cube.getYellow();
 		}  //end getRed if
 
+		//Clockwise Rotational
+		else if (input == "clock_right") 
+		{
+			cube.clockRight();
+			cout << "Right side has been rotated clockwise." << endl;
+		} //end clockRight if
+
+		else if (input == "clock_left") 
+		{
+			cube.clockLeft();
+			cout << "Left side has been rotated clockwise." << endl;
+		} //end clockLeft if
+		
+		//Counter Clockwise turns
+		else if (input == "count_top")
+		{
+			cube.countTop();
+			cout << "Top side has been rotated counter clockwise" << endl;
+		}
+
 		else if(input == "help")
 		{
 			cout << "\nAvailable commands:" << endl;
@@ -69,7 +89,12 @@ int main() {
 			cout << "show_green - Shows green side of cube" << endl;
 			cout << "show_orange - Shows orange side of cube" << endl;
 			cout << "show_yellow - Shows yellow side of cube" << endl;
-			// Place rotation commands here eventually
+			// Clockwise rotation commands
+			// Might want to consider changing the command name
+			cout << "clock_right - Rotates the right side of the cube clockwise" << endl;
+			cout << "clock_left - Rotates the left side of the cube clockwise." << endl;
+			//Counter Clockwise Rorations
+			cout << "count_top - Rotates the top of the cube counter clockwise." << endl;
 			//Other informational commands
 			cout << "info - Show explaination as to how the cube is interperted in the program" << endl;
 			cout << "help - Shows list of commands available to the user" << endl;
