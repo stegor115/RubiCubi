@@ -31,9 +31,14 @@ class Cube
 		void clockTop();
 		void clockBottom();
 		void clockFront();
+		void clockBack();
 		//Counter-Clockwise Rotations
 		void countRight();
+		void countLeft();
 		void countTop();
+		void countBottom();
+		void countFront();
+		void countBack();
 		Cube();
 };
 

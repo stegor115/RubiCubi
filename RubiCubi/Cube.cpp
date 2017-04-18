@@ -11,6 +11,7 @@ Cube::Cube()
 	char yellow[3][3] = { { 'Y','Y','Y' },{ 'Y','Y','Y' },{ 'Y','Y','Y' } };
 }
 
+//Gets----------------------------------------------------------------------------------------------------------------------------
 void Cube::getWhite() 
 {
 	std::cout << "-------\n";
@@ -89,7 +90,8 @@ void Cube::getYellow()
 	} //end 
 }
 
-//Clockwise Rotations
+//Clockwise Rotations-----------------------------------------------------------------------------------------------------
+//TODO: Make the FACES turn, like the "tire" part, not just the treads.
 void Cube::clockRight()
 {
 	char temp[3][3]; //Holds value of a side to swap
@@ -142,23 +144,35 @@ void Cube::clockBottom()
 	} //end for
 }// end clockBottom
 
-void Cube::clockFront() //Broken, All sides are NOT the same position
+void Cube::clockFront()
 {
 	char temp[3][3];
 	for (int i = 0; i < 3; i++)
 	{
-		temp[i][2] = blue[i][2];
-		blue[i][2] = orange[i][2];
-		orange[i][2] = green[i][2];
-		green[i][2] = red[i][2];
-		red[i][2] = temp[i][2];
+		//This rotates the front face relative to white side being the face of the cube.
+		temp[2][i] = blue[2][i];
+		blue[2][i] = orange[i][2];
+		orange[i][2] = green[0][i];
+		green[0][i] = red[i][0];
+		red[i][0] = temp[2][i];
 	} //end for
-
-	//TO:DO: Clock Back
-
 } //end clockFront
 
-//Counter Clockwise Rotations
+void Cube::clockBack()
+{
+	char temp[3][3];
+	for (int i = 0; i < 3; i++)
+	{
+		temp[0][i] = blue[0][i];
+		blue[0][i] = red[i][2];
+		red[i][2] = green[2][i];
+		green[2][i] = orange[i][0];
+		orange[i][0] = temp[0][i];
+	} //end for
+} //end clockBack
+
+//Counter Clockwise Rotations----------------------------------------------------------------------------------
+//TODO: Make the FACES turn, like above
 void Cube::countRight()
 {
 	char temp[3][3];
@@ -172,6 +186,19 @@ void Cube::countRight()
 	} //end for
 } // end count Right
 
+void Cube::countLeft()
+{
+	char temp[3][3];
+	for (int i = 0; i < 3; i++)
+	{
+		temp[i][0] = white[i][0];
+		white[i][0] = green[i][0];
+		green[i][0] = yellow[i][0];
+		yellow[i][0] = blue[i][0];
+		blue[i][0] = temp[i][0];
+	} //end for
+} //end count Left
+
 void Cube::countTop()
 {
 	char temp[3][3];
@@ -184,3 +211,42 @@ void Cube::countTop()
 		red[0][i] = temp[0][i];
 	} //end for
 } //end clock Top
+
+void Cube::countFront()
+{
+	char temp[3][3];
+	for (int i = 0; i < 3; i++)
+	{
+		temp[2][i] = blue[2][i];
+		blue[2][i] = red[i][0];
+		red[i][0] = green[0][i];
+		green[0][i] = orange[i][2];
+		orange[i][2] = temp[2][i];
+	} //end for
+} //end count Front
+
+void Cube::countBottom()
+{
+	char temp[3][3];
+	for (int i = 0; i < 3; i++)
+	{
+		temp[2][i] = white[2][i];
+		white[2][i] = red[2][i];
+		red[2][i] = yellow[2][i];
+		yellow[2][i] = orange[2][i];
+		orange[2][i] = temp[2][i];
+	} //end for
+} //end count Bottom
+
+void Cube::countBack()
+{
+	char temp[3][3];
+	for (int i = 0; i < 3; i++)
+	{
+		temp[0][i] = blue[0][i];
+		blue[0][i] = orange[i][0];
+		orange[i][0] = green[2][i];
+		green[2][i] = red[i][2];
+		red[i][2] = temp[0][i];
+	} //end for
+} //end clock Back

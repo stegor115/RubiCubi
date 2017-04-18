@@ -29,6 +29,7 @@ int main() {
 	{
 		cout << "Enter command: ";
 		cin >> input;
+		//Shows--------------------------------------------------------------------------------------------------------------------
 		if (input == "show_white") 
 		{
 			cube.getWhite();
@@ -59,7 +60,7 @@ int main() {
 			cube.getYellow();
 		}  //end getRed if
 
-		//Clockwise Rotational
+		//Clockwise Rotational---------------------------------------------------------------------------------------
 		else if (input == "clock_right") 
 		{
 			cube.clockRight();
@@ -84,24 +85,56 @@ int main() {
 			cout << "Bottom side has been rotated clockwise." << endl;
 		} //end clockBottom if
 
-		else if (input == "clock_front") //Currently Broken
+		else if (input == "clock_front")
 		{
 			cube.clockFront();
 			cout << "Front face has been rotated clockwise." << endl;
-		}
+		} //end clockFront
 		
-		//Counter Clockwise turns
+		else if (input == "clock_back")
+		{
+			cube.clockBack();
+			cout << "Back end has been rotated clockwise" << endl;
+		} //end clockBack
+		
+		//Counter Clockwise turns------------------------------------------------------------------
 		else if (input == "count_right")
 		{
 			cube.countRight();
 			cout << "Right side has been rotated counter clockwise." << endl;
 		} //end countRight if
 
+		else if (input == "count_left")
+		{
+			cube.countLeft();
+			cout << "Left side has been rotated counter clockwise." << endl;
+		} //end countLeft if
+
 		else if (input == "count_top")
 		{
 			cube.countTop();
-			cout << "Top side has been rotated counter clockwise" << endl;
+			cout << "Top side has been rotated counter clockwise." << endl;
 		} //end countTop if
+
+		else if (input == "count_bottom")
+		{
+			cube.countBottom();
+			cout << "Bottom side has been rotated counter clockwise" << endl;
+		} //end countBottom if
+
+		else if (input == "count_front")
+		{
+			cube.countFront();
+			cout << "Front face has been rotated counter clockwise" << endl;
+		} //end countFront if
+
+		else if (input == "count_back")
+		{
+			cube.countBack();
+			cout << "Back end has been rotated counter clockwise." << endl;
+		} //end countBack if
+
+		//Informational-----------------------------------------------------------------------------
 
 		else if(input == "help")
 		{
@@ -116,12 +149,18 @@ int main() {
 			// Clockwise rotation commands
 			// Might want to consider changing the command name
 			cout << "\nclock_right - Rotates the right side of the cube clockwise" << endl;
-			cout << "clock_left - Rotates the left side of the cube clockwise." << endl;
+			cout << "clock_left - Rotates the left side of the cube clockwise" << endl;
 			cout << "clock_top - Rotates the top side of the cube clockwise" << endl;
 			cout << "clock_bottom - Rotates the bottom side of the cube clockwise" << endl;
-			cout << "clock_front - Rotates the front face of the cube clockwise (CURRENTLY BROKEN)" << endl;
+			cout << "clock_front - Rotates the front face of the cube clockwise" << endl;
+			cout << "clock_back - Rotates the back end of the cube clockwise" << endl;
 			//Counter Clockwise Rorations
-			cout << "\ncount_top - Rotates the top of the cube counter clockwise." << endl;
+			cout << "\ncount_right - Rotates the right side of the cube counter clockwise" << endl;
+			cout << "count_left - Rotates the left side of the cube counter clockwise" << endl;
+			cout << "count_top - Rotates the top of the cube counter clockwise." << endl;
+			cout << "count_bottom - Rotates the bottom side of the cube counter clockwise" << endl;
+			cout << "count_front - Rotates the front face of the cube counter clockwise" << endl;
+			cout << "count_back - Rotates the back end of the cube counter clockwise" << endl;
 			//Other informational commands
 			cout << "\ninfo - Show explaination as to how the cube is interperted in the program" << endl;
 			cout << "help - Shows list of commands available to the user" << endl;
