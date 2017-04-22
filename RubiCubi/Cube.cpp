@@ -1,5 +1,6 @@
 #include "Cube.h"
 #include <iostream>
+int MAX_SIZE = 3;
 
 Cube::Cube()
 {
@@ -103,6 +104,7 @@ void Cube::clockRight()
 		yellow[i][2] = blue[i][2];
 		blue[i][2] = temp[i][2];
 	}//end for
+
 } //end clock right
 
 void Cube::clockLeft()
@@ -149,7 +151,7 @@ void Cube::clockFront()
 	char temp[3][3];
 	for (int i = 0; i < 3; i++)
 	{
-		//This rotates the front face relative to white side being the face of the cube.
+		//This rotates the front face's sides relative to white side being the face of the cube.
 		temp[2][i] = blue[2][i];
 		blue[2][i] = orange[i][2];
 		orange[i][2] = green[0][i];
@@ -184,6 +186,20 @@ void Cube::countRight()
 		yellow[i][2] = green[i][2];
 		green[i][2] = temp[i][2];
 	} //end for
+
+	 //Face rotation
+	char charTemp;
+	for (int i = 0; i < MAX_SIZE / 2; i++) {
+		for (int j = i; j < MAX_SIZE - i - 1; j++)
+		{
+			charTemp = red[i][j];
+			red[i][j] = red[j][MAX_SIZE - i - 1];
+			red[j][MAX_SIZE - i - 1] = red[MAX_SIZE - i - 1][MAX_SIZE - j - 1];
+			red[MAX_SIZE - i - 1][MAX_SIZE - j - 1] = red[MAX_SIZE - j - 1][i];
+			red[MAX_SIZE - j - 1][i] = charTemp;
+		} //end nested for
+	} //end for
+
 } // end count Right
 
 void Cube::countLeft()
@@ -196,6 +212,19 @@ void Cube::countLeft()
 		green[i][0] = yellow[i][0];
 		yellow[i][0] = blue[i][0];
 		blue[i][0] = temp[i][0];
+	} //end for
+
+	  //Face rotation
+	char charTemp;
+	for (int i = 0; i < MAX_SIZE / 2; i++) {
+		for (int j = i; j < MAX_SIZE - i - 1; j++)
+		{
+			charTemp = orange[i][j];
+			orange[i][j] = orange[j][MAX_SIZE - i - 1];
+			orange[j][MAX_SIZE - i - 1] = orange[MAX_SIZE - i - 1][MAX_SIZE - j - 1];
+			orange[MAX_SIZE - i - 1][MAX_SIZE - j - 1] = orange[MAX_SIZE - j - 1][i];
+			orange[MAX_SIZE - j - 1][i] = charTemp;
+		} //end nested for
 	} //end for
 } //end count Left
 
@@ -210,6 +239,19 @@ void Cube::countTop()
 		yellow[0][i] = red[0][i];
 		red[0][i] = temp[0][i];
 	} //end for
+
+	//Face rotation
+	char charTemp;
+	for (int i = 0; i < MAX_SIZE / 2; i++) {
+		for (int j = i; j < MAX_SIZE - i - 1; j++)
+		{
+			charTemp = blue[i][j];
+			blue[i][j] = blue[j][MAX_SIZE - i - 1];
+			blue[j][MAX_SIZE - i - 1] = blue[MAX_SIZE - i - 1][MAX_SIZE - j - 1];
+			blue[MAX_SIZE - i - 1][MAX_SIZE - j - 1] = blue[MAX_SIZE - j - 1][i];
+			blue[MAX_SIZE - j - 1][i] = charTemp;
+		} //end nested for
+	} //end for
 } //end clock Top
 
 void Cube::countFront()
@@ -222,6 +264,19 @@ void Cube::countFront()
 		red[i][0] = green[0][i];
 		green[0][i] = orange[i][2];
 		orange[i][2] = temp[2][i];
+	} //end for
+
+	//Face rotation
+	char charTemp;
+	for (int i = 0; i < MAX_SIZE / 2; i++) {
+		for (int j = i; j < MAX_SIZE - i - 1; j++)
+		{
+			charTemp = white[i][j];
+			white[i][j] = white[j][MAX_SIZE - i - 1];
+			white[j][MAX_SIZE - i - 1] = white[MAX_SIZE - i - 1][MAX_SIZE - j - 1];
+			white[MAX_SIZE - i - 1][MAX_SIZE - j - 1] = white[MAX_SIZE - j - 1][i];
+			white[MAX_SIZE - j - 1][i] = charTemp;
+		} //end nested for
 	} //end for
 } //end count Front
 
@@ -236,6 +291,19 @@ void Cube::countBottom()
 		yellow[2][i] = orange[2][i];
 		orange[2][i] = temp[2][i];
 	} //end for
+
+	//Face rotation
+	char charTemp;
+	for (int i = 0; i < MAX_SIZE / 2; i++) {
+		for (int j = i; j < MAX_SIZE - i - 1; j++)
+		{
+			charTemp = green[i][j];
+			green[i][j] = green[j][MAX_SIZE - i - 1];
+			green[j][MAX_SIZE - i - 1] = green[MAX_SIZE - i - 1][MAX_SIZE - j - 1];
+			green[MAX_SIZE - i - 1][MAX_SIZE - j - 1] = green[MAX_SIZE - j - 1][i];
+			green[MAX_SIZE - j - 1][i] = charTemp;
+		} //end nested for
+	} //end for
 } //end count Bottom
 
 void Cube::countBack()
@@ -249,4 +317,21 @@ void Cube::countBack()
 		green[2][i] = red[i][2];
 		red[i][2] = temp[0][i];
 	} //end for
-} //end clock Back
+
+	//Face rotation, this time it's clockwise due to orientation
+	char charTemp;
+	for (int k = 0; k < 3; k++) //Repeat 3 times to get equivlant to clockwise, figure out better way later
+	{
+		for (int i = 0; i < MAX_SIZE / 2; i++) 
+		{
+			for (int j = i; j < MAX_SIZE - i - 1; j++)
+			{
+				charTemp = yellow[i][j];
+				yellow[i][j] = yellow[j][MAX_SIZE - i - 1];
+				yellow[j][MAX_SIZE - i - 1] = yellow[MAX_SIZE - i - 1][MAX_SIZE - j - 1];
+				yellow[MAX_SIZE - i - 1][MAX_SIZE - j - 1] = yellow[MAX_SIZE - j - 1][i];
+				yellow[MAX_SIZE - j - 1][i] = charTemp;
+			} //end nested for
+		} //end for
+	} //end repeating for
+} //end count Back
