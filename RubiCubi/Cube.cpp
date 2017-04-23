@@ -105,6 +105,19 @@ void Cube::clockRight()
 		blue[i][2] = temp[i][2];
 	}//end for
 
+	 //Face rotation, code without loops first then fix
+	char charTemp;
+	charTemp = red[0][0];
+	red[0][0] = red[0][2];
+	red[0][2] = red[2][2];
+	red[2][2] = red[2][0];
+	red[2][0] = charTemp;
+	charTemp = red[0][1];
+	red[0][1] = red[1][2];
+	red[1][2] = red[2][1];
+	red[2][1] = red[1][0];
+	red[1][0] = charTemp;
+
 } //end clock right
 
 void Cube::clockLeft()
@@ -160,6 +173,10 @@ void Cube::clockFront()
 	} //end for
 } //end clockFront
 
+/*IMPORANT NOTE ABOUT BACK FACE
+From the white's perspective, this is UPSIDE DOWN. It makes sense if you try to turn the cube while holding finger against white side
+TODO: FIX THIS
+*/
 void Cube::clockBack()
 {
 	char temp[3][3];
@@ -318,20 +335,17 @@ void Cube::countBack()
 		red[i][2] = temp[0][i];
 	} //end for
 
-	//Face rotation, this time it's clockwise due to orientation
+	//Face rotation, code without loops first then fix POTENTIALLY BROKEN
 	char charTemp;
-	for (int k = 0; k < 3; k++) //Repeat 3 times to get equivlant to clockwise, figure out better way later
-	{
-		for (int i = 0; i < MAX_SIZE / 2; i++) 
-		{
-			for (int j = i; j < MAX_SIZE - i - 1; j++)
-			{
-				charTemp = yellow[i][j];
-				yellow[i][j] = yellow[j][MAX_SIZE - i - 1];
-				yellow[j][MAX_SIZE - i - 1] = yellow[MAX_SIZE - i - 1][MAX_SIZE - j - 1];
-				yellow[MAX_SIZE - i - 1][MAX_SIZE - j - 1] = yellow[MAX_SIZE - j - 1][i];
-				yellow[MAX_SIZE - j - 1][i] = charTemp;
-			} //end nested for
-		} //end for
-	} //end repeating for
+	charTemp = yellow[0][2];
+	yellow[0][2] = yellow[0][0];
+	yellow[0][0] = yellow[2][0];
+	yellow[2][0] = yellow[2][2];
+	yellow[2][2] = charTemp;
+	charTemp = yellow[0][1];
+	yellow[0][1] = yellow[1][0];
+	yellow[1][0] = yellow[2][1];
+	yellow[2][1] = yellow[1][2];
+	yellow[1][2] = charTemp;
+
 } //end count Back
