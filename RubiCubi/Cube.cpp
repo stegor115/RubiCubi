@@ -136,14 +136,29 @@ void Cube::clockLeft()
 void Cube::clockTop()
 {
 	char temp[3][3];
+	char yellowFix;
+	//Unswitches
+	yellowFix = yellow[0][0];
+	yellow[0][0] = yellow[0][2];
+	yellow[0][2] = yellowFix;
+	yellowFix = yellow[2][0];
+	yellow[2][0] = yellow[2][2];
+	yellow[2][2] = yellowFix;
 	for (int i = 0; i < 3; i++) 
 	{
 		temp[0][i] = white[0][i];
 		white[0][i] = red[0][i];
-		red[0][i] = yellow[0][i];
-		yellow[0][i] = orange[0][i];
+		red[0][i] = yellow[2][i];
+		yellow[2][i] = orange[0][i];
 		orange[0][i] = temp[0][i];
 	} //end for
+	//Switches
+	yellowFix = yellow[0][0];
+	yellow[0][0] = yellow[0][2];
+	yellow[0][2] = yellowFix;
+	yellowFix = yellow[2][0];
+	yellow[2][0] = yellow[2][2];
+	yellow[2][2] = yellowFix;
 } //end clock top
 
 void Cube::clockBottom()
@@ -174,7 +189,7 @@ void Cube::clockFront()
 } //end clockFront
 
 /*IMPORANT NOTE ABOUT BACK FACE
-From the white's perspective, this is UPSIDE DOWN. It makes sense if you try to turn the cube while holding finger against white side
+From the white's perspective, this is MIRRORED.
 TODO: FIX THIS
 */
 void Cube::clockBack()
@@ -188,7 +203,20 @@ void Cube::clockBack()
 		green[2][i] = orange[i][0];
 		orange[i][0] = temp[0][i];
 	} //end for
+
+	char charTemp;
+	charTemp = yellow[0][2];
+	yellow[0][2] = yellow[0][0];
+	yellow[0][0] = yellow[2][0];
+	yellow[2][0] = yellow[2][2];
+	yellow[2][2] = charTemp;
+	charTemp = yellow[0][1];
+	yellow[0][1] = yellow[1][0];
+	yellow[1][0] = yellow[2][1];
+	yellow[2][1] = yellow[1][2];
+	yellow[1][2] = charTemp;
 } //end clockBack
+
 
 //Counter Clockwise Rotations----------------------------------------------------------------------------------
 //TODO: Make the FACES turn, like above
@@ -337,15 +365,15 @@ void Cube::countBack()
 
 	//Face rotation, code without loops first then fix POTENTIALLY BROKEN
 	char charTemp;
-	charTemp = yellow[0][2];
-	yellow[0][2] = yellow[0][0];
-	yellow[0][0] = yellow[2][0];
-	yellow[2][0] = yellow[2][2];
+	charTemp = yellow[2][0];
+	yellow[2][0] = yellow[0][0];
+	yellow[0][0] = yellow[0][2];
+	yellow[0][2] = yellow[2][2];
 	yellow[2][2] = charTemp;
-	charTemp = yellow[0][1];
-	yellow[0][1] = yellow[1][0];
-	yellow[1][0] = yellow[2][1];
-	yellow[2][1] = yellow[1][2];
-	yellow[1][2] = charTemp;
+	charTemp = yellow[1][0];
+	yellow[1][0] = yellow[0][1];
+	yellow[0][1] = yellow[1][2];
+	yellow[1][2] = yellow[2][1];
+	yellow[2][1] = charTemp;
 
 } //end count Back
